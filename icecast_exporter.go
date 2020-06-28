@@ -17,7 +17,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"flag"
+	"github.com/namsral/flag"
 	"io/ioutil"
 	"net"
 	"net/http"
@@ -232,10 +232,10 @@ func (e *Exporter) scrape(status chan<- *IcecastStatus) {
 
 func main() {
 	var (
-		listenAddress    = flag.String("web.listen-address", ":9146", "Address to listen on for web interface and telemetry.")
-		metricsPath      = flag.String("web.telemetry-path", "/metrics", "Path under which to expose metrics.")
-		icecastScrapeURI = flag.String("icecast.scrape-uri", "http://localhost:8000/status-json.xsl", "URI on which to scrape Icecast.")
-		icecastTimeout   = flag.Duration("icecast.timeout", 5*time.Second, "Timeout for trying to get stats from Icecast.")
+		listenAddress    = flag.String("web_listen_address", ":9146", "Address to listen on for web interface and telemetry.")
+		metricsPath      = flag.String("web_telemetry_path", "/metrics", "Path under which to expose metrics.")
+		icecastScrapeURI = flag.String("icecast_scrape_uri", "http://localhost:8000/status-json.xsl", "URI on which to scrape Icecast.")
+		icecastTimeout   = flag.Duration("icecast_timeout", 5*time.Second, "Timeout for trying to get stats from Icecast.")
 	)
 	flag.Parse()
 

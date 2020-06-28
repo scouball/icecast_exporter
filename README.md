@@ -16,7 +16,8 @@ go get github.com/markuslindenberg/icecast_exporter
 
 ```
 docker pull markuslindenberg/icecast_exporter
-docker run --rm -p 9146:9146 markuslindenberg/icecast_exporter -icecast.scrape-uri http://icecast:8000/status-json.xsl
+docker run --rm -p 9146:9146 markuslindenberg/icecast_exporter -icecast_scrape_uri http://icecast:8000/status-json.xsl
+docker run --rm -p 9146:9146 -e ICECAST_SCRAPE_URI=http://icecast:8000/status-json.xsl markuslindenberg/icecast_exporter
 ```
 
 # Running
@@ -26,16 +27,16 @@ Help on flags:
 go run icecast_exporter --help
 
 Usage of ./icecast_exporter:
-  -icecast.scrape-uri string
+  -icecast_scrape_uri string
     	URI on which to scrape Icecast. (default "http://localhost:8000/status-json.xsl")
-  -icecast.timeout duration
+  -icecast_timeout duration
     	Timeout for trying to get stats from Icecast. (default 5s)
   -log.format value
     	Set the log target and format. Example: "logger:syslog?appname=bob&local=7" or "logger:stdout?json=true" (default "logger:stderr")
   -log.level value
     	Only log messages with the given severity or above. Valid levels: [debug, info, warn, error, fatal]
-  -web.listen-address string
+  -web_listen_address string
     	Address to listen on for web interface and telemetry. (default ":9146")
-  -web.telemetry-path string
+  -web_telemetry_path string
     	Path under which to expose metrics. (default "/metrics")
 ```
